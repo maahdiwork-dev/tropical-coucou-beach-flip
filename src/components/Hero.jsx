@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion'
 import { Anchor, ChevronDown } from 'lucide-react'
+import heroImage from '../assets/images/hero/hero-main.jpg'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-gradient wave-divider overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center wave-divider overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      />
+      <div className="absolute inset-0 hero-gradient" />
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />

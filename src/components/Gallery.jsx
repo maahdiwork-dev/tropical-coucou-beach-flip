@@ -1,6 +1,12 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Camera } from 'lucide-react'
+import aerialImage from '../assets/images/gallery/01-aerial.jpg'
+import cabanesImage from '../assets/images/gallery/02-cabanes.jpg'
+import coveImage from '../assets/images/gallery/03-cove.jpg'
+import foodImage from '../assets/images/gallery/04-food.jpg'
+import sunsetImage from '../assets/images/gallery/05-sunset.jpg'
+import ambianceImage from '../assets/images/gallery/06-tropical-ambiance.jpg'
 
 function FadeInSection({ children, className = '' }) {
   const ref = useRef(null)
@@ -21,38 +27,32 @@ function FadeInSection({ children, className = '' }) {
 const galleryItems = [
   {
     label: 'Vue aérienne',
-    gradient: 'gallery-gradient-1',
-    emoji: '🏝️',
+    image: aerialImage,
     size: 'sm:col-span-2 sm:row-span-2',
   },
   {
     label: 'Nos cabanes',
-    gradient: 'gallery-gradient-2',
-    emoji: '🏡',
+    image: cabanesImage,
     size: '',
   },
   {
     label: 'La crique',
-    gradient: 'gallery-gradient-3',
-    emoji: '🌊',
+    image: coveImage,
     size: '',
   },
   {
     label: 'Cuisine méditerranéenne',
-    gradient: 'gallery-gradient-4',
-    emoji: '🍽️',
+    image: foodImage,
     size: '',
   },
   {
     label: 'Coucher de soleil',
-    gradient: 'gallery-gradient-5',
-    emoji: '🌅',
+    image: sunsetImage,
     size: '',
   },
   {
     label: 'Ambiance tropicale',
-    gradient: 'gallery-gradient-6',
-    emoji: '🌴',
+    image: ambianceImage,
     size: 'sm:col-span-2',
   },
 ]
@@ -81,24 +81,18 @@ export default function Gallery() {
           {galleryItems.map((item, index) => (
             <FadeInSection key={index}>
               <div
-                className={`group relative rounded-2xl overflow-hidden cursor-pointer ${item.gradient} ${
+                className={`group relative rounded-2xl overflow-hidden cursor-pointer ${
                   item.size
                 }`}
                 style={{ minHeight: index === 0 ? '400px' : '220px' }}
               >
-                {/* Gradient overlay pattern */}
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-4 left-4 w-20 h-20 border border-white/30 rounded-full" />
-                  <div className="absolute bottom-4 right-4 w-32 h-32 border border-white/20 rounded-full" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white/10 rounded-full" />
-                </div>
-
-                {/* Center emoji */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-5xl sm:text-6xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-500">
-                    {item.emoji}
-                  </span>
-                </div>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
                 {/* Label */}
                 <div className="absolute inset-0 flex flex-col items-center justify-end p-5 sm:p-6 bg-gradient-to-t from-black/50 via-transparent to-transparent">
